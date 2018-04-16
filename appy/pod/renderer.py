@@ -398,13 +398,13 @@ class Renderer:
                 toInsert += ' <manifest:file-entry manifest:media-type="%s" ' \
                             'manifest:full-path="%s"/>\n' % (mimeType, fileName)
             manifestName = j(self.unzipFolder, j('META-INF', 'manifest.xml'))
-            f = os.open(manifestName)
+            f = open(manifestName)
             manifestContent = f.read()
             hook = '</manifest:manifest>'
-            manifestContent = manifestContent.replace(hook, toInsert+hook)
+            manifestContent = manifestContent.replace(hook, toInsert + hook)
             f.close()
             # Write the new manifest content
-            f = os.open(manifestName, 'w')
+            f = open(manifestName, 'w')
             f.write(manifestContent)
             f.close()
 
